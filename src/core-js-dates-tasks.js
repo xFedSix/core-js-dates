@@ -72,11 +72,10 @@ function getDayName(date) {
  */
 function getNextFriday(date) {
   const dayNum = new Date(date);
-  dayNum.setDate(dayNum.getDate() + 1);
-  while (dayNum.getDay() !== 5) {
-    dayNum.setDate(dayNum.getDate() + 1);
-  }
-  return dayNum;
+  const daysToFriday = (5 - dayNum.getDay() + 7) % 7 || 7;
+  const friday = new Date(date);
+  friday.setDate(dayNum.getDate() + daysToFriday);
+  return friday;
 }
 
 /**
